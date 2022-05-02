@@ -33,7 +33,13 @@ const Header = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 text-end">
+                        <div className="col-md-6 text-end d-flex justify-content-end align-items-center">
+                            {
+                                user ?
+                                    <p className='m-0 pe-3'>Welcome {user?.email.slice(0, 30)}</p>
+                                    :
+                                    <p className='m-0'></p>
+                            }
                             <button className='topBtn'>Book a tour with me</button>
                         </div>
                     </div>

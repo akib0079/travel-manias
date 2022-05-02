@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import logInImg from '../../../images/image-12.webp'
+import SocialLogIns from '../SocialLogIns/SocialLogIns';
 import './Login.css';
 
 const LogIn = () => {
@@ -70,8 +71,13 @@ const LogIn = () => {
                                             <p className='text-success m-0'></p>
                                     }
                                     <button className='LogInBtn mt-1' type='submit'>LogIn as Customer</button>
-                                    <p className='registerP'>New to Travel-Mania? <span onClick={navigateRegister}>Register Here.</span></p>
+                                    <p className='registerP mb-1'>New to Travel-Mania? <span onClick={navigateRegister}>Register Here.</span></p>
                                 </Form>
+                                <div className="socials m-0">
+                                    <hr></hr>
+                                    <p className='mb-1 p_socials'>Or Continue With Socials</p>
+                                    <SocialLogIns></SocialLogIns>
+                                </div>
 
                             </div>
                         </div>

@@ -71,14 +71,14 @@
 .allServices{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 25px;
+    gap: 30px;
 }
 
 .service-Inner{
     cursor: pointer;
 }
 .service-Inner:hover .serviceInfo{
-    transform: translateY(-30px);
+    transform: translateY(-62px);
     transition: 0.4s;
     cursor: pointer;
 }
@@ -101,7 +101,7 @@
     padding: 25px 25px 20px 25px;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     border-radius: 10px;
-    transform: translateY(-20px);
+    transform: translateY(-50px);
     background-color: white;
     margin: 0px 15px;
     transition: 0.4s;

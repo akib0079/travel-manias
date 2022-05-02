@@ -5,6 +5,7 @@ import logInImg from '../../../images/image-12.webp'
 import './Register.css';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import SocialLogIns from '../SocialLogIns/SocialLogIns';
 
 const Register = () => {
     const [c_error, setC_error] = useState();
@@ -64,10 +65,10 @@ const Register = () => {
                                         <Form.Group className="mb-3" controlId="formGroupEmail">
                                             <Form.Control name='email' required type="mail" placeholder="Enter your Email Address" />
                                         </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formGroupPass">
+                                        <Form.Group as={Col} className="mb-3" controlId="formGroupPass">
                                             <Form.Control name='password' required type="password" placeholder="Enter your password" />
                                         </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formGroupConfirmPass">
+                                        <Form.Group as={Col} className="mb-3" controlId="formGroupConfirmPass">
                                             <Form.Control name='c_password' required type="password" placeholder="Confirm Password" />
                                         </Form.Group>
                                         <p className='text-danger m-0'>{error?.message.slice(16)}</p>
@@ -82,6 +83,12 @@ const Register = () => {
                                     <button className='LogInBtn' type='submit'>Register as Customer</button>
                                     <p className='registerP'>Already have an account? <span onClick={navigateLogIn}>LogIn Here.</span></p>
                                 </Form>
+
+                                <div className="socials m-0">
+                                    <hr></hr>
+                                    <p className='mb-1 p_socials'>Or Continue With Socials</p>
+                                    <SocialLogIns></SocialLogIns>
+                                </div>
 
                             </div>
                         </div>
