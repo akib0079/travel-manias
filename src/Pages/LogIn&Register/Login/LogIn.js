@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import logInImg from '../../../images/image-12.webp'
 import './Login.css';
@@ -11,6 +11,10 @@ const LogIn = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
+
+    const location = useLocation()
+
+    let from = location.state?.from?.pathname || "/";
 
     const [
         signInWithEmailAndPassword,
@@ -29,7 +33,7 @@ const LogIn = () => {
     }
 
     if (user) {
-        navigate('/home');
+        navigate(from, { replace: true });
     }
 
     const navigateRegister = (e) => {
@@ -61,7 +65,7 @@ const LogIn = () => {
                                     <p className='text-danger m-0'>{error?.message.slice(16)}</p>
                                     {
                                         loading ?
-                                            <p className='text-success m-0'>Logging...</p>
+                                            <p className='text-success m-0'>Successful Login, Please Wait...</p>
                                             :
                                             <p className='text-success m-0'></p>
                                     }

@@ -1,5 +1,5 @@
 import './App.css';
-import './Pages/Global css/grobal.css'
+import './Pages/GlobalCss/grobal.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import 'boxicons';
@@ -12,6 +12,7 @@ import Checkout from './Pages/Checkout/Checkout';
 import Login from './Pages/LogIn&Register/Login/LogIn';
 import Register from './Pages/LogIn&Register/Register/Register';
 import Page404 from './Pages/Page404/Page404';
+import RequireAuth from './Pages/LogIn&Register/RequireAuth/RequireAuth';
 
 
 function App() {
@@ -23,8 +24,18 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/checkout/:serviceInfo" element={<Checkout />} />
+        {/* Protacted */}
+        <Route path="/checkout" element={
+          <RequireAuth>
+            <Checkout />
+          </RequireAuth>
+        } />
+
+        <Route path="/checkout/:serviceInfo" element={
+          <RequireAuth>
+            <Checkout />
+          </RequireAuth>
+        } />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
