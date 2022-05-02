@@ -5,6 +5,17 @@ import logInImg from '../../../images/image-12.webp'
 import './Register.css';
 
 const Register = () => {
+
+    const handleRegister = e => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const name = e.target.f_name.value;
+        const password = e.target.password.value;
+        const c_password = e.target.c_password.value;
+
+    }
+
+
     return (
         <div className='logInPage'>
             <div className="logInInner">
@@ -17,19 +28,19 @@ const Register = () => {
                             <div className="loginInner">
                                 <h4 className='a_header'>Welcome to Travel-Mania</h4>
                                 <h2 className='a_title'>Register Here</h2>
-                                <Form className='mt-4'>
+                                <Form onSubmit={handleRegister} className='mt-4'>
                                     <Row>
-                                        <Form.Group className="mb-3" controlId="formGroupEmail">
-                                            <Form.Control required type="text" placeholder="Enter your Name" />
+                                        <Form.Group className="mb-3" controlId="formGroupName">
+                                            <Form.Control name='f_name' required type="text" placeholder="Enter your Name" />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formGroupEmail">
-                                            <Form.Control required type="mail" placeholder="Enter your Email Address" />
+                                            <Form.Control name='email' required type="mail" placeholder="Enter your Email Address" />
                                         </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formGroupEmail">
-                                            <Form.Control required type="password" placeholder="Enter your password" />
+                                        <Form.Group className="mb-3" controlId="formGroupPass">
+                                            <Form.Control name='password' required type="password" placeholder="Enter your password" />
                                         </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formGroupEmail">
-                                            <Form.Control required type="password" placeholder="Confirm Password" />
+                                        <Form.Group className="mb-3" controlId="formGroupConfirmPass">
+                                            <Form.Control name='c_password' required type="password" placeholder="Confirm Password" />
                                         </Form.Group>
                                     </Row>
                                     <button className='LogInBtn' type='submit'>Register as Customer</button>

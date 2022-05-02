@@ -42,12 +42,13 @@
     margin-top: 10px;
 }
 
-.registerP a{
+.registerP span{
     color: #FD6952;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.registerP a:hover{
+.registerP span:hover{
     color: #0d0d0d;
     text-decoration: underline;
 }
