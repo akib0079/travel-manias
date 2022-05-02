@@ -18,7 +18,16 @@ function App() {
     <div className="App">
       <Header></Header>
 
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout/:serviceInfo" element={<Checkout />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Page404 />} />
+      </Routes>
 
       <Footer></Footer>
     </div>
