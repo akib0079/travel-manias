@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const ServiceLoop = (props) => {
-    const { s_name, rating, img, s_info } = props.info;
+    const { s_name, price, rating, img, s_info } = props.info;
     const allInfo = props.info;
     const navigate = useNavigate();
 
@@ -14,15 +14,20 @@ const ServiceLoop = (props) => {
         <div className='service-Inner'>
             <img className='img-fluid image_s' src={img} alt="" />
             <div className="serviceInfo">
-                <div className="rating d-flex">
-                    <div className="icn me-2">
-                        <box-icon name='star' type='solid' color="#E8604C" ></box-icon>
-                        <box-icon name='star' type='solid' color="#E8604C" ></box-icon>
-                        <box-icon name='star' type='solid' color="#E8604C" ></box-icon>
-                        <box-icon name='star' type='solid' color="#E8604C" ></box-icon>
-                        <box-icon name='star' color="#E8604C"></box-icon>
+                <div className="priceNrating">
+                    <div className="rating d-flex">
+                        <div className="icn me-2">
+                            <box-icon name='star' type='solid' color="#E8604C" ></box-icon>
+                            <box-icon name='star' type='solid' color="#E8604C" ></box-icon>
+                            <box-icon name='star' type='solid' color="#E8604C" ></box-icon>
+                            <box-icon name='star' type='solid' color="#E8604C" ></box-icon>
+                            <box-icon name='star' color="#E8604C"></box-icon>
+                        </div>
+                        <p>Rating : {rating}</p>
                     </div>
-                    <p>Rating : {rating}</p>
+                    <div className="price">
+                        <p>Price : {price}</p>
+                    </div>
                 </div>
                 <h3>{s_name}</h3>
                 <div className="location d-flex">

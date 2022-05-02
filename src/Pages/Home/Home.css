@@ -83,6 +83,11 @@
     cursor: pointer;
 }
 
+.priceNrating{
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .image_s{
     z-index: 0 !important;
@@ -169,4 +174,20 @@
 
 .aboutInner{
     margin-left: 40px;
+}
+
+
+/* Mobile Responsiveness */
+
+@media (max-width: 767px) {
+
+    .topBtn{
+        display: none !important;
+    }
+  
+    .allServices{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 25px;
+    }
 }

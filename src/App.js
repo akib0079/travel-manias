@@ -10,6 +10,7 @@ import About from './Pages/About/About';
 import Blog from './Pages/Blog/Blog';
 import Checkout from './Pages/Checkout/Checkout';
 import Login from './Pages/LogIn&Register/Login/LogIn';
+import Register from './Pages/LogIn&Register/Register/Register';
 import Page404 from './Pages/Page404/Page404';
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/checkout/:serviceInfo" element={<Checkout />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
 
