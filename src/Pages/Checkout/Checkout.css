@@ -1,0 +1,35 @@
+.CheckOutHeader{
+    background-image: url('../../images/bannerImage.webp');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    box-shadow:inset 0 0 0 2000px rgba(5, 5, 5, 0.301);
+}
+
+.CheckOutHeader{
+    padding: 80px 0px;
+    color: white;
+}
+
+.s_name1{
+    font-weight: 600;
+    color: #FF7C67;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.082);
+}
+
+.checkoutForm{
+    padding: 50px 0px;
+}
+
+.subBtn{
+    padding: 10px 30px;
+    width: 100%;
+    font-size: 17px;
+    background-color: #fd6952;
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.943);
+    font-weight: 500;
+    border: 2px solid #fd6952;
+    transition: 0.3s linear;
+    margin-top: 10px;
+}
