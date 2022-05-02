@@ -78,3 +78,23 @@
     margin-right: 8px;
     margin-top: 2px;
 }
+
+
+.logOut{
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+
+.logOut:before{
+    content: '';
+    height: 30px;
+    background-color: #39394323;
+    width: 2px;
+    margin: 0px 20px 0px -5px;
+}
+
+.logOut box-icon{
+    margin-right: 8px;
+    margin-top: 2px;
+}

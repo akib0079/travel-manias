@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logInImg from '../../../images/image-12.webp'
 import './Register.css';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const Register = () => {
+    const [c_error, setC_error] = useState();
+    const nav = useNavigate();
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
     const handleRegister = e => {
         e.preventDefault();
@@ -13,7 +23,24 @@ const Register = () => {
         const password = e.target.password.value;
         const c_password = e.target.c_password.value;
 
+        if (password !== c_password) {
+            setC_error('Password did not match, Please Check again');
+            return;
+        }
+        createUserWithEmailAndPassword(email, password);
+
+        setC_error('');
     }
+
+    if (user) {
+        nav('/home');
+    }
+
+    const navigateLogIn = () => {
+        nav('/login');
+    }
+
+
 
 
     return (
@@ -42,11 +69,17 @@ const Register = () => {
                                         <Form.Group className="mb-3" controlId="formGroupConfirmPass">
                                             <Form.Control name='c_password' required type="password" placeholder="Confirm Password" />
                                         </Form.Group>
+                                        <p className='text-danger m-0'>{error?.message.slice(16)}</p>
+                                        <p className='text-danger mb-1'>{c_error}</p>
+                                        {
+                                            loading ?
+                                                <p className='text-success mb-1'>Initialising User...</p>
+                                                :
+                                                <p className='text-success m-0'></p>
+                                        }
                                     </Row>
                                     <button className='LogInBtn' type='submit'>Register as Customer</button>
-                                    <p className='registerP'>Already have an account?
-                                        <Link to={'/login'}><span> LogIn Here.</span></Link>
-                                    </p>
+                                    <p className='registerP'>Already have an account? <span onClick={navigateLogIn}>LogIn Here.</span></p>
                                 </Form>
 
                             </div>

@@ -1,9 +1,21 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import logo from '../../images/Travel Mania logo.png';
 import './Header.css';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+
 
 const Header = () => {
+
+    const [user, loading, error] = useAuthState(auth);
+
+    const logout = () => {
+        signOut(auth);
+    };
+
     return (
         <div className="header sticky-top">
             <div className="top-header">
@@ -27,13 +39,11 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <nav className="navbar navbar-expand-lg navbar-light" >
-                <div className="container">
+            <Navbar bg="light" expand="lg">
+                <Container>
                     <Link to={'/home'}><img className='logoImage' src={logo} alt="Logos" /></Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link className="nav-link" to={'/home'}>Home</Link>
@@ -48,15 +58,24 @@ const Header = () => {
                                 <Link className="nav-link" to={'/blog'}>Blog</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link logIn" to={'/login'}>
-                                    <box-icon className="userIcn" name='user' color='#928773' ></box-icon>
-                                    <p>Log or Register</p>
-                                </Link>
+                                <div className='verify'>
+                                    {user?.email ?
+                                        <div className="nav-link logOut">
+                                            <box-icon className="userIcn" name='log-in-circle' color='#928773'></box-icon>
+                                            <p onClick={logout}>Logout</p>
+                                        </div>
+                                        :
+                                        <Link className="nav-link logIn" to={'/login'}>
+                                            <box-icon className="userIcn" name='user' color='#928773' ></box-icon>
+                                            <p>Log or Register</p>
+                                        </Link>
+                                    }
+                                </div>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         </div>
 
     );

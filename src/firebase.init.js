@@ -6,12 +6,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_apikey,
-    authDomain: process.env.REACT_APP_authDomain,
-    projectId: process.env.REACT_APP_projectId,
-    storageBucket: process.env.REACT_APP_storageBucket,
-    messagingSenderId: process.env.REACT_APP_messagingSenderId,
-    appId: process.env.REACT_APP_appId
+    apiKey: "AIzaSyAaF3zGHqk_akU73Xr0hUcrXCrSKxhuqHw",
+    authDomain: "travel-mania-project.firebaseapp.com",
+    projectId: "travel-mania-project",
+    storageBucket: "travel-mania-project.appspot.com",
+    messagingSenderId: "712252273417",
+    appId: "1:712252273417:web:6e5e7d68c13c03115899d8"
 };
 
 // Initialize Firebase
