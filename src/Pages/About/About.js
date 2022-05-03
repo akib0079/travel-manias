@@ -1,5 +1,5 @@
 import React from 'react';
-import aboutImg from '../../images/luca-bravo-O453M2Liufs-unsplash.webp'
+import aboutImg from '../../images/Group 1aa.png'
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -7,15 +7,15 @@ const About = () => {
         <div className="aboutSec">
             <div className="container">
                 <div className="row d-flex align-items-center">
-                    <div className="col-md-6 g-4">
-                        <img className='img-fluid a_img' src={aboutImg} alt="" />
+                    <div className="col-md-4 g-4">
+                        <img className='img-fluid' src={aboutImg} alt="" />
                     </div>
-                    <div className="col-md-6 g-4">
+                    <div className="col-md-8 g-4">
                         <div className="aboutInner">
                             <h3 className='a_header'>Learn More About me</h3>
-                            <h2 className='a_title'>Learn More About us!</h2>
-                            <p>Travel-Mania is a Travel guide solution for all the travel enthusiastic people. We provide travel guides for everyone. You can book our services and get a detailed view from us.</p>
-                            <Link to={'/about'}><button className='AboutBtn'>About me</button></Link>
+                            <h2 className='a_title'>Hello this is Akib Zawayed.<br></br>Fullstack Web developer.</h2>
+                            <p>Travel-Mania is a Travel guide solution project that was built by me.As like this project I am trying to make the Web Better and Innovative in my own way. Currently I am studying as a student and working as a Freelancer. You can explore more project from my github.</p>
+                            <a target="blank" href='https://github.com/akib0079'><button className='AboutBtn'>Explore Github</button></a>
                         </div>
                     </div>
                 </div>
