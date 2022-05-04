@@ -3,7 +3,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import logInImg from '../../../images/image-12.webp'
 import './Register.css';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import SocialLogIns from '../SocialLogIns/SocialLogIns';
 
@@ -15,10 +15,12 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    // Update user name.
+    const [updateProfile, updating, errorProfile] = useUpdateProfile(auth);
 
 
-    const handleRegister = e => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const name = e.target.f_name.value;
@@ -29,13 +31,19 @@ const Register = () => {
             setC_error('Password did not match, Please Check again');
             return;
         }
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
 
-        setC_error('');
     }
 
     if (user) {
         nav('/home');
+        console.log(user);
+        setC_error('');
+    }
+
+    if (!user?.emailVerified) {
+        nav('/verify');
     }
 
     const navigateLogIn = () => {

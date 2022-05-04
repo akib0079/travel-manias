@@ -21,7 +21,7 @@ const Header = () => {
             <div className="top-header">
                 <div className="container">
                     <div className="row d-flex align-items-center">
-                        <div className="col-md-6">
+                        <div className="col-md-6 contact_info">
                             <div className="topbarInfo">
                                 <div className="tel">
                                     <box-icon name='phone' type='solid' color='#ffffff' ></box-icon>
@@ -33,12 +33,12 @@ const Header = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 text-end d-flex justify-content-end align-items-center">
+                        <div className="col-md-6 text-end d-flex justify-content-end align-items-center userName">
                             {
                                 user ?
-                                    <p className='m-0 pe-3'>Welcome {user?.email.slice(0, 30)}</p>
+                                    <p className='m-0 pe-3'>Welcome {user?.displayName}</p>
                                     :
-                                    <p className='m-0'></p>
+                                    <p className='m-0 pe-3'>Welcome user</p>
                             }
                             <button className='topBtn'>Book a tour with me</button>
                         </div>

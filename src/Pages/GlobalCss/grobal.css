@@ -10,6 +10,10 @@
     color: #ff7c67 !important;
 }
 
+.page404{
+    min-height: 80vh;
+}
+
 
 /* Mobile Responsiveness */
 
@@ -52,11 +56,33 @@
 
     .HeroSecInner h1 {
         font-family: 'Satisfy', cursive;
-        font-size: 68px;
+        font-size: 65px !important;
         color: #ff7c67;
         text-shadow: 3px 3px 3px rgb(0 0 0 / 70%);
     }
-    .heroSec {
-        min-height: 65vh;
+    .HeroSecInner h2 {
+        font-size: 22px !important;
     }
+    .heroSec {
+        min-height: 65vh !important;
+    }
+
+    .contact_info{
+        display: none;
+    }
+
+    .userName p{
+        text-align: center !important;
+        width: 100% !important;
+        padding: 10px 0px !important;
+    }
+
+    .serviceInfo {
+        padding: 15px !important;
+    }
+
+    .a_img {
+        height: 400px !important;
+    }
+
 }  

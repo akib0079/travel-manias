@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import logInImg from '../../../images/image-12.webp'
@@ -8,6 +8,8 @@ import SocialLogIns from '../SocialLogIns/SocialLogIns';
 import './Login.css';
 
 const LogIn = () => {
+
+    const [c_errors, setC_errors] = useState('');
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -23,6 +25,9 @@ const LogIn = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, errorPassReset] = useSendPasswordResetEmail(
+        auth
+    );
 
 
     const handleLogIn = (event) => {
@@ -33,12 +38,20 @@ const LogIn = () => {
         signInWithEmailAndPassword(email, password);
     }
 
-    if (user) {
+    if (user || user?.emailVerified) {
         navigate(from, { replace: true });
     }
 
     const navigateRegister = (e) => {
         navigate('/register')
+    }
+
+    const resetPassword = async (e) => {
+        const email = emailRef.current.value;
+        if (!email) {
+            alert('Fill up email address')
+        }
+        await sendPasswordResetEmail(email);
     }
 
 
@@ -54,6 +67,7 @@ const LogIn = () => {
                             <div className="loginInner">
                                 <h4 className='a_header'>Welcome to Travel-Mania</h4>
                                 <h2 className='a_title'>LogIn Here</h2>
+                                <h2 className='a_title'>{c_errors}</h2>
                                 <Form onSubmit={handleLogIn} className='mt-4'>
                                     <Row>
                                         <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -64,14 +78,30 @@ const LogIn = () => {
                                         </Form.Group>
                                     </Row>
                                     <p className='text-danger m-0'>{error?.message.slice(16)}</p>
+                                    <p className='text-danger m-0'>{c_errors}</p>
                                     {
                                         loading ?
                                             <p className='text-success m-0'>Successful Login, Please Wait...</p>
                                             :
                                             <p className='text-success m-0'></p>
                                     }
+                                    {
+                                        sending ?
+                                            <p className='text-success m-0'>Sending Email...</p>
+                                            :
+                                            <p className='text-success m-0'></p>
+                                    }
+                                    {
+                                        errorPassReset ?
+                                            <p className='text-danger m-0'>{errorPassReset.message}</p>
+                                            :
+                                            <p className='text-success m-0'></p>
+                                    }
                                     <button className='LogInBtn mt-1' type='submit'>LogIn as Customer</button>
-                                    <p className='registerP mb-1'>New to Travel-Mania? <span onClick={navigateRegister}>Register Here.</span></p>
+                                    <p className='registerP mb-1'>New to Travel-Mania?
+                                        <span onClick={navigateRegister}> Register Here.</span> or
+                                        <span className='resetPass' onClick={resetPassword}> Reset Password?</span>
+                                    </p>
                                 </Form>
                                 <div className="socials m-0">
                                     <hr></hr>
