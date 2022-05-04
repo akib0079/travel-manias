@@ -14,7 +14,7 @@ const VerfPage = () => {
     return (
         <div className='page404 d-flex align-items-center'>
             <div className="container p-2 text-center">
-                <img className='img-fluid w-50' src={verifyImg} alt="" />
+                <img className='img-fluid w-25' src={verifyImg} alt="" />
                 <h3>Please Check your mail and Verify your mail.</h3>
                 <h4>Didn't recive the mail?"Check Spam"</h4>
                 <a href='/home'>
